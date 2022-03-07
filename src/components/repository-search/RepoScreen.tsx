@@ -7,13 +7,13 @@ export interface IRepo {
     id: number;
 }
 
-export function RepoScreen() {
+export function RepoScreen({user}: {user: String}) {
 
     const [repos, setRepos] = useState<any[]>([])
     const [searchfield, setSearchfield] = useState("")
 
     const fetchPublicRepos = () => {
-        fetch(`https://api.github.com/users/pascwin/repos`)
+        fetch(`https://api.github.com/users/${user}/repos`)
             .then(res => res.json())
             .then(data => setRepos(data))
     }

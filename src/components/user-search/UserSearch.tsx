@@ -1,11 +1,8 @@
-import { Button } from "react-bootstrap";
 import "./User.css"
 
 const UserSearch = ({ findUser }: { findUser: Function }) => {
     return (
         <div className="container">
-            {/* <input id="" type="search" placeholder='Search for user' />
-            <Button onClick={() => findUser()}>search</Button> */}
             <div className="descriptionContainer">
                 <h1>Find a User from Github:</h1>
             </div>

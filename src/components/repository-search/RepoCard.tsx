@@ -5,17 +5,20 @@ import "./Repo.css"
 interface RepositoryCardStatelessProps {
     name: string,
     url: string,
+    description: string,
 }
 
-const RepoCard: React.SFC<RepositoryCardStatelessProps> = ({ name, url }) => {
+const RepoCard: React.SFC<RepositoryCardStatelessProps> = ({ name, url, description }) => {
     return (
         <Card className="text-center card-container">
             <Card.Header><h3>{name}</h3></Card.Header>
+            {
+            description ?
+            <Card.Text>{description}</Card.Text> :
+            <Card.Text>no description</Card.Text> 
+            }
+            
             <Card.Body>
-                <Card.Title>Special title treatment</Card.Title>
-                <Card.Text>
-                    With supporting text below as a natural lead-in to additional content.
-                </Card.Text>
                 <Button variant="primary" href={url}>Find Repository in Github</Button>
             </Card.Body>
         </Card>

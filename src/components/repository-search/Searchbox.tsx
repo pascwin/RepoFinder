@@ -7,9 +7,11 @@ interface ISearchBoxProps {
 const SearchBox = ({ searchChange }: ISearchBoxProps) => {
   return (
     <div>
-      <input
-        onChange={searchChange}
-      />
+        <div className="input-group container">
+                <div className="form-outline">
+                    <input onChange={searchChange} type="search" id="userSearch" className="form-control" placeholder="search in Repos" />
+                </div>
+            </div>
     </div>
   );
 };

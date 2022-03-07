@@ -9,7 +9,7 @@ const RepoList = ({repos}: {repos: Array<IRepo>}) => {
             {
                 repos.map((repo, i) => {
                     return (
-                        <RepositoryCard name={repo.name} key={i} url={repo.html_url}  />
+                        <RepositoryCard name={repo.name} key={i} url={repo.html_url} description={repo.description}  />
                     )
                 })
             }

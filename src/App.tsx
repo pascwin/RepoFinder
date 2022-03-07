@@ -3,7 +3,6 @@ import './App.css';
 import RepoScreen from "./components/repository-search/RepoScreen"
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import UserSearch from './components/user-search/UserSearch';
-import RepoFinderNavbar from './components/RepoFinderNavbar';
 
 export interface IUser {
   name: string;
@@ -18,11 +17,11 @@ function App() {
       .then(res => res.json())
       .then(data => {
         if (data.message) {
-          console.log("no user found")
         } else {
           setUser(data.login)
         }
       })
+      .catch(err => console.log(err))
   }
 
   const checkNewUser = () => {
@@ -30,9 +29,9 @@ function App() {
   }
 
   const userToSearch = () => {
-    const input = (document.getElementById("userSearch") as HTMLInputElement).value
-    console.log(input)
-    return input;
+    // const input = 
+    // return input;
+    return (document.getElementById("userSearch") as HTMLInputElement).value
   }
 
 
@@ -54,7 +53,6 @@ function App() {
             </div>
           ) :
           <div>
-            <h2>{user}'s Repositories </h2>
             <RepoScreen user={user} />
           </div>
       }

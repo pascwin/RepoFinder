@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import './App.css';
 import RepoScreen from "./components/repository-search/RepoScreen"
-import Button from 'react-bootstrap/Button';
+import { Navbar, Container, Nav, Button } from "react-bootstrap";
+import UserSearch from './components/user-search/UserSearch';
+import RepoFinderNavbar from './components/RepoFinderNavbar';
 
 export interface IUser {
   name: string;
@@ -23,6 +25,10 @@ function App() {
       })
   }
 
+  const checkNewUser = () => {
+    setUser("")
+  }
+
   const userToSearch = () => {
     const input = (document.getElementById("userSearch") as HTMLInputElement).value
     console.log(input)
@@ -32,21 +38,26 @@ function App() {
 
   return (
     <div className="App">
+      <Navbar bg="dark" variant="dark">
+        <Container>
+          <Navbar.Brand>Repofinder</Navbar.Brand>
+        </Container>
+        <Nav className="me-auto buttonContainer">
+          {user && <Button onClick={() => { checkNewUser() }}>check different user</Button>}
+        </Nav>
+      </Navbar>
       {
         !user ?
           (
-            <div>
-              <input id="userSearch" type="search" placeholder='Search for user'/>
-              <Button onClick={() => findUser(userToSearch())}>search</Button>
+            <div className='userSearchContainer'>
+              <UserSearch findUser={() => findUser(userToSearch())} />
             </div>
           ) :
           <div>
-            <h2>You searching through the repositories of {user} </h2>
+            <h2>{user}'s Repositories </h2>
             <RepoScreen user={user} />
           </div>
-
       }
-
     </div>
   );
 }
